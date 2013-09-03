@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tweetshow</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body class="">
+        <script id="photo-card" type="text/x-handlebars">
+        <div class="photo-card">
+            <div class="image" style="background-image: url({{photoUrl}});"></div>
+            <div class="tweet">
+                <span class="date">{{fromNow created_at}}</span>
+                <div class="user-info"> 
+                    <img class="avatar" src="{{user.profile_image_url}}">
+                    <span>
+                        <span class="user-name">{{user.name}}</span>
+                        <span class="user-handle">{{user.screen_name}}</span>
+                    </span>
+                </div>
+
+                <div class="tweet-body">{{cleanBody}}</div>
+            </div>
+        </div>
+        </script>
+
+        <script id="text-card" type="text/x-handlebars">
+        <div class="text-card">
+            <div class="tweet">
+                <span class="date">{{fromNow created_at}}</span>
+                <div class="user-info"> 
+                    <img class="avatar" src="{{user.profile_image_url}}">
+                    <span>
+                        <span class="user-name">{{user.name}}</span>
+                        <span class="user-handle">{{user.screen_name}}</span>
+                    </span>
+                </div>
+
+                <div class="tweet-body">{{cleanBody}}</div>
+            </div>
+        </div>
+        </script>
+
+        <div class="container">
+            <div class="card current" id="card-0">
+                <ul class="spinner">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="card" id="card-1">
+                <ul class="spinner">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
+            <span class="info">#sueandmatt2013</span>
+            <div class="help">
+              <dl>
+                <dt>query</dt><dd>The query string to submit to twitter</dd>
+                <dt>slideTime</dt><dd>The number of milliseconds to show each slide</dd>
+                <dt>updateTime</dt><dd>The number of milliseconds to wait before fetching new data</dd>
+              </dl>
+            </div>
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/handlebars.js/dist/handlebars.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/main.js -->
+        <script src="scripts/tweetshow.js"></script>
+        <script src="scripts/tweet.js"></script>
+        <script src="scripts/gardenhose.js"></script>
+        <script src="scripts/card.js"></script>
+        <script src="scripts/conductor.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
