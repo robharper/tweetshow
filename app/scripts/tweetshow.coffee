@@ -13,7 +13,7 @@ window.location.search.replace /([^?&=]+)=([^&=]*)/g, (_, key, value) ->
 
 settingsDefaults = 
   query: '#sueandmatt2013'
-  slideTime: 5000
+  slideTime: 7000
   updateTime: 30000
 
 # Application namespace + settings

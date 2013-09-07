@@ -34,7 +34,7 @@ Gardenhose =
       queue = @queue
 
     # Create x randomly biased towards 1
-    gen = => Math.floor(queue.length * Math.sqrt(Math.random())) 
+    gen = => Math.floor(queue.length * Math.random()) 
     idx = gen()
     idx = gen() while @queue.indexOf(queue[idx]) == @lastChosenIdx and queue.length > 1
     @lastChosenIdx = @queue.indexOf(queue[idx])
@@ -56,7 +56,7 @@ Gardenhose =
     else
       $.ajax(
         url: '/twitter/search/tweets'
-        data: {q: @query}
+        data: {q: @query, count: 100}
       ).then(handleResults)
 
 
