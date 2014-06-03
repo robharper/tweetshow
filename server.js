@@ -17,18 +17,18 @@ app.set('port', process.env.PORT || 3000);
 var lastRequest = 0;
 var cachedResponses = {};
 app.get('/twitter/*', function (req, res) {
-  if (Date.now() > lastRequest+10000 || !cachedResponses[req.path]) {
+  if (Date.now() > lastRequest+10000 || !cachedResponses[req.query.q]) {
     // Been a while since we allowed a request through...
     lastRequest = Date.now();
-    console.log('Requesting from twitter: ' + req.path);
+    console.log('Requesting from twitter: ' + req.query.q);
     twitter.get(req.path.replace('/twitter/', ''), req.query, function( data, error, status ) {
-      cachedResponses[req.path] = data;
+      cachedResponses[req.query.q] = data;
       res.send(data);
     });
   } else {
     // Return cached data
     console.log('Returning cached data...');
-    res.send(cachedResponses[req.path]);
+    res.send(cachedResponses[req.query.q]);
   }
 });
 
