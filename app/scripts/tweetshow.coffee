@@ -12,13 +12,16 @@ window.location.search.replace /([^?&=]+)=([^&=]*)/g, (_, key, value) ->
     env[key] = value
 
 settingsDefaults = 
-  query: '#sueandmatt2013'
+  hash: 'cats'
   slideTime: 7000
   updateTime: 30000
 
+settings = _.defaults(env, settingsDefaults)
+settings.query ?= '#'+settings.hash
+
 # Application namespace + settings
 TweetShow = 
-  settings: _.defaults(env, settingsDefaults)
+  settings: settings
 
 
 # Keyboard interface:
@@ -27,7 +30,9 @@ $(window).on('keypress', (evt) ->
     when 'h'.charCodeAt(0) then $('.help').toggle()
     when 't'.charCodeAt(0) then $('body').toggleClass('theme-alt')
 )
-    
+  
+# Setup
+$('#hash').text(TweetShow.settings.query)
 
 # Expose globally
 window.TweetShow = TweetShow
